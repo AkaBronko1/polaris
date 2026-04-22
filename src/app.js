@@ -42,6 +42,10 @@ function getAvatarClass(index) {
 }
 
 function showMessage(text, isError = false) {
+  if (!formMessage) {
+    return;
+  }
+
   formMessage.textContent = text;
   formMessage.className = isError
     ? "mt-3 text-sm text-rose-600"
@@ -49,6 +53,10 @@ function showMessage(text, isError = false) {
 }
 
 function showEditModal(member) {
+  if (!editModal || !editMemberForm || !editFormMessage) {
+    return;
+  }
+
   editingMemberId = member.id;
   editMemberForm.nombre.value = member.nombre;
   editMemberForm.correo.value = member.correo;
@@ -61,6 +69,10 @@ function showEditModal(member) {
 }
 
 function hideEditModal() {
+  if (!editModal || !editMemberForm || !editFormMessage) {
+    return;
+  }
+
   editingMemberId = null;
   editMemberForm.reset();
   editFormMessage.textContent = "";
@@ -70,6 +82,10 @@ function hideEditModal() {
 }
 
 function showEditFormMessage(text, isError = false) {
+  if (!editFormMessage) {
+    return;
+  }
+
   editFormMessage.textContent = text;
   editFormMessage.className = isError
     ? "text-sm text-rose-600"
@@ -77,6 +93,10 @@ function showEditFormMessage(text, isError = false) {
 }
 
 function showDeleteModal(member) {
+  if (!deleteModal || !deleteModalText) {
+    return;
+  }
+
   deletingMemberId = member.id;
   deleteModalText.textContent = `Seguro que deseas eliminar a ${member.nombre}?`;
   deleteModal.classList.remove("hidden");
@@ -84,12 +104,20 @@ function showDeleteModal(member) {
 }
 
 function hideDeleteModal() {
+  if (!deleteModal) {
+    return;
+  }
+
   deletingMemberId = null;
   deleteModal.classList.add("hidden");
   deleteModal.classList.remove("flex");
 }
 
 function renderMembers(members) {
+  if (!membersList) {
+    return;
+  }
+
   if (!Array.isArray(members) || members.length === 0) {
     membersList.innerHTML =
       '<p class="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-500">No hay miembros registrados aun.</p>';
@@ -123,169 +151,190 @@ async function loadMembers() {
     currentMembers = members;
     renderMembers(members);
   } catch (error) {
-    membersList.innerHTML =
-      '<p class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">Error al cargar miembros.</p>';
+    if (membersList) {
+      membersList.innerHTML =
+        '<p class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">Error al cargar miembros.</p>';
+    }
   }
 }
 
-memberForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+if (memberForm) {
+  memberForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  const formData = new FormData(memberForm);
-  const payload = {
-    nombre: String(formData.get("nombre") || "").trim(),
-    correo: String(formData.get("correo") || "").trim(),
-    rol: String(formData.get("rol") || "").trim()
-  };
+    const formData = new FormData(memberForm);
+    const payload = {
+      nombre: String(formData.get("nombre") || "").trim(),
+      correo: String(formData.get("correo") || "").trim(),
+      rol: String(formData.get("rol") || "").trim()
+    };
 
-  if (!payload.nombre || !payload.correo || !payload.rol) {
-    showMessage("Completa todos los campos.", true);
-    return;
-  }
-
-  try {
-    const response = await fetch("/api/members", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.message || "No se pudo registrar el miembro");
-    }
-
-    showMessage("Miembro registrado correctamente.");
-    memberForm.reset();
-    await loadMembers();
-  } catch (error) {
-    showMessage(error.message || "Error al registrar miembro.", true);
-  }
-});
-
-membersList.addEventListener("click", async (event) => {
-  const target = event.target;
-  if (!(target instanceof HTMLButtonElement)) {
-    return;
-  }
-
-  const action = target.dataset.action;
-  const memberId = Number(target.dataset.id);
-
-  if (!action || !memberId) {
-    return;
-  }
-
-  if (action === "edit") {
-    const memberToEdit = currentMembers.find((member) => member.id === memberId);
-    if (!memberToEdit) {
-      showMessage("Miembro no encontrado.", true);
+    if (!payload.nombre || !payload.correo || !payload.rol) {
+      showMessage("Completa todos los campos.", true);
       return;
     }
-    showEditModal(memberToEdit);
-    return;
-  }
 
-  if (action === "delete") {
-    const memberToDelete = currentMembers.find((member) => member.id === memberId);
-    if (!memberToDelete) {
-      showMessage("Miembro no encontrado.", true);
-      return;
-    }
-    showDeleteModal(memberToDelete);
-  }
-});
+    try {
+      const response = await fetch("/api/members", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
 
-editMemberForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+      const result = await response.json();
 
-  if (!editingMemberId) {
-    showEditFormMessage("No hay miembro seleccionado para editar.", true);
-    return;
-  }
-
-  const formData = new FormData(editMemberForm);
-  const payload = {
-    nombre: String(formData.get("nombre") || "").trim(),
-    correo: String(formData.get("correo") || "").trim(),
-    rol: String(formData.get("rol") || "").trim()
-  };
-
-  if (!payload.nombre || !payload.correo || !payload.rol) {
-    showEditFormMessage("Completa todos los campos.", true);
-    return;
-  }
-
-  try {
-    const response = await fetch(`/api/members/${editingMemberId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const result = await response.json();
-    if (!response.ok) {
-      throw new Error(result.message || "No se pudo actualizar el miembro");
-    }
-
-    hideEditModal();
-    showMessage("Miembro actualizado correctamente.");
-    await loadMembers();
-  } catch (error) {
-    showEditFormMessage(error.message || "Error al actualizar miembro.", true);
-  }
-});
-
-confirmDeleteButton.addEventListener("click", async () => {
-  if (!deletingMemberId) {
-    return;
-  }
-
-  try {
-    const response = await fetch(`/api/members/${deletingMemberId}`, {
-      method: "DELETE"
-    });
-
-    if (!response.ok) {
-      let errorMessage = "No se pudo eliminar el miembro";
-      try {
-        const errorData = await response.json();
-        errorMessage = errorData.message || errorMessage;
-      } catch {
-        errorMessage = "No se pudo eliminar el miembro";
+      if (!response.ok) {
+        throw new Error(result.message || "No se pudo registrar el miembro");
       }
-      throw new Error(errorMessage);
+
+      showMessage("Miembro registrado correctamente.");
+      memberForm.reset();
+      await loadMembers();
+    } catch (error) {
+      showMessage(error.message || "Error al registrar miembro.", true);
+    }
+  });
+}
+
+if (membersList) {
+  membersList.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLButtonElement)) {
+      return;
     }
 
-    hideDeleteModal();
-    showMessage("Miembro eliminado correctamente.");
-    await loadMembers();
-  } catch (error) {
-    showMessage(error.message || "Error al eliminar miembro.", true);
-  }
-});
+    const action = target.dataset.action;
+    const memberId = Number(target.dataset.id);
 
-refreshButton.addEventListener("click", loadMembers);
+    if (!action || !memberId) {
+      return;
+    }
 
-closeEditModalButton.addEventListener("click", hideEditModal);
-cancelEditModalButton.addEventListener("click", hideEditModal);
-cancelDeleteButton.addEventListener("click", hideDeleteModal);
+    if (action === "edit") {
+      const memberToEdit = currentMembers.find((member) => member.id === memberId);
+      if (!memberToEdit) {
+        showMessage("Miembro no encontrado.", true);
+        return;
+      }
+      showEditModal(memberToEdit);
+      return;
+    }
 
-editModal.addEventListener("click", (event) => {
-  if (event.target === editModal) {
-    hideEditModal();
-  }
-});
+    if (action === "delete") {
+      const memberToDelete = currentMembers.find((member) => member.id === memberId);
+      if (!memberToDelete) {
+        showMessage("Miembro no encontrado.", true);
+        return;
+      }
+      showDeleteModal(memberToDelete);
+    }
+  });
+}
 
-deleteModal.addEventListener("click", (event) => {
-  if (event.target === deleteModal) {
-    hideDeleteModal();
-  }
-});
+if (editMemberForm) {
+  editMemberForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-loadMembers();
+    if (!editingMemberId) {
+      showEditFormMessage("No hay miembro seleccionado para editar.", true);
+      return;
+    }
+
+    const formData = new FormData(editMemberForm);
+    const payload = {
+      nombre: String(formData.get("nombre") || "").trim(),
+      correo: String(formData.get("correo") || "").trim(),
+      rol: String(formData.get("rol") || "").trim()
+    };
+
+    if (!payload.nombre || !payload.correo || !payload.rol) {
+      showEditFormMessage("Completa todos los campos.", true);
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/members/${editingMemberId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.message || "No se pudo actualizar el miembro");
+      }
+
+      hideEditModal();
+      showMessage("Miembro actualizado correctamente.");
+      await loadMembers();
+    } catch (error) {
+      showEditFormMessage(error.message || "Error al actualizar miembro.", true);
+    }
+  });
+}
+
+if (confirmDeleteButton) {
+  confirmDeleteButton.addEventListener("click", async () => {
+    if (!deletingMemberId) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/members/${deletingMemberId}`, {
+        method: "DELETE"
+      });
+
+      if (!response.ok) {
+        let errorMessage = "No se pudo eliminar el miembro";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {
+          errorMessage = "No se pudo eliminar el miembro";
+        }
+        throw new Error(errorMessage);
+      }
+
+      hideDeleteModal();
+      showMessage("Miembro eliminado correctamente.");
+      await loadMembers();
+    } catch (error) {
+      showMessage(error.message || "Error al eliminar miembro.", true);
+    }
+  });
+}
+
+if (refreshButton) {
+  refreshButton.addEventListener("click", loadMembers);
+}
+if (closeEditModalButton) {
+  closeEditModalButton.addEventListener("click", hideEditModal);
+}
+if (cancelEditModalButton) {
+  cancelEditModalButton.addEventListener("click", hideEditModal);
+}
+if (cancelDeleteButton) {
+  cancelDeleteButton.addEventListener("click", hideDeleteModal);
+}
+if (editModal) {
+  editModal.addEventListener("click", (event) => {
+    if (event.target === editModal) {
+      hideEditModal();
+    }
+  });
+}
+if (deleteModal) {
+  deleteModal.addEventListener("click", (event) => {
+    if (event.target === deleteModal) {
+      hideDeleteModal();
+    }
+  });
+}
+
+if (memberForm || membersList) {
+  loadMembers();
+}

@@ -1,110 +1,61 @@
 <!doctype html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
-	<link href="./dist/output.css" rel="stylesheet">
-	<title>POLARIS - Miembros</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="./dist/output.css" rel="stylesheet">
+  <title>POLARIS - Inicio</title>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 px-3 py-6 text-slate-900 sm:px-5 sm:py-8" style="font-family: 'Sora', sans-serif;">
-	<main class="mx-auto w-full max-w-6xl rounded-3xl bg-gradient-to-br from-slate-300 via-slate-300 to-slate-400 p-4 shadow-2xl ring-1 ring-cyan-100/25 sm:p-6 lg:p-8">
-		<header class="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 px-5 pb-6 pt-5 text-white shadow-2xl sm:px-8 sm:pt-7">
-			<div class="pointer-events-none absolute -left-10 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-2xl"></div>
-			<div class="pointer-events-none absolute -right-8 bottom-0 h-24 w-44 rounded-full bg-cyan-300/15 blur-2xl"></div>
-			<h1 class="relative text-6xl leading-none font-black uppercase tracking-wide text-cyan-300 drop-shadow-2xl sm:text-7xl lg:text-8xl" style="font-family: 'Archivo Black', sans-serif;">POLARIS</h1>
-			<p class="relative mt-2 text-2xl font-extrabold uppercase tracking-wider text-cyan-200 sm:text-3xl lg:text-4xl">MIEMBROS</p>
-		</header>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 px-3 py-6 text-slate-100 sm:px-5 sm:py-8" style="font-family: 'Sora', sans-serif;">
+  <main class="mx-auto w-full max-w-6xl rounded-3xl bg-gradient-to-br from-slate-300 via-slate-300 to-slate-400 p-4 shadow-2xl ring-1 ring-cyan-100/25 sm:p-6 lg:p-8">
+    <nav class="mb-6 rounded-2xl bg-slate-950/90 px-4 py-3 shadow-xl ring-1 ring-cyan-100/20 sm:px-6">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <a href="/" class="text-2xl font-black uppercase tracking-wide text-cyan-300" style="font-family: 'Archivo Black', sans-serif;">POLARIS</a>
+        <ul class="flex flex-wrap gap-2 text-sm font-semibold">
+          <li><a href="/" class="inline-flex rounded-lg bg-cyan-500/20 px-3 py-2 text-cyan-100 ring-1 ring-cyan-300/40">Inicio</a></li>
+          <li><a href="/registro.html" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Registro</a></li>
+          <li><a href="/proyectos.html" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Proyectos</a></li>
+          <li><a href="/miembros.html" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Miembros</a></li>
+        </ul>
+      </div>
+    </nav>
 
-		<section class="grid gap-5 lg:grid-cols-2">
-			<form id="memberForm" class="rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
-				<h2 class="text-2xl font-extrabold text-slate-800">Registrar miembro</h2>
-				<p class="mt-2 text-sm text-slate-600">Completa los campos para invitar a un nuevo miembro.</p>
+    <header class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 px-10 pb-10 pt-8 text-white shadow-2xl sm:px-8 sm:pt-10">
+      <div class="pointer-events-none absolute -left-10 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-2xl"></div>
+      <div class="pointer-events-none absolute -right-8 bottom-0 h-24 w-44 rounded-full bg-cyan-300/15 blur-2xl"></div>
+      <h1 class="relative text-5xl leading-none font-black uppercase tracking-wide text-cyan-300 drop-shadow-2xl sm:text-7xl" style="font-family: 'Archivo Black', sans-serif;">POLARIS Registry</h1>
+      <p class="relative mt-4 max-w-3xl text-lg font-semibold text-cyan-100 sm:text-xl">Programa de Oportunidades para el Liderazgo y el Aprendizaje en la Revolucion de la Industria Espacial.</p>
+      <p class="relative mt-2 max-w-3xl text-sm text-slate-200 sm:text-base">Formando estudiantes en tecnologias espaciales en el Instituto Tecnologico de Matamoros.</p>
+      <a href="/registro.html" class="relative mt-6 inline-flex items-center justify-center rounded-xl border border-cyan-200/50 bg-cyan-400/10 px-5 py-3 text-sm font-bold text-cyan-50 transition hover:bg-cyan-400/20">Unete a POLARIS</a>
+    </header>
 
-				<div class="mt-6 space-y-4">
-					<div>
-						<label for="nombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre completo</label>
-						<input id="nombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="Ej: Ana Lopez">
-					</div>
-					<div>
-						<label for="correo" class="mb-2 block text-sm font-semibold text-slate-700">Correo electronico</label>
-						<input id="correo" name="correo" type="email" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="ejemplo@correo.com">
-					</div>
-					<div>
-						<label for="rol" class="mb-2 block text-sm font-semibold text-slate-700">Rol</label>
-						<select id="rol" name="rol" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-							<option value="" selected disabled>Selecciona un rol</option>
-							<option value="Lider de equipo">Lider de equipo</option>
-							<option value="Participante">Participante</option>
-							<option value="Mentor">Mentor</option>
-							<option value="Coordinador">Coordinador</option>
-							<option value="Colaborador">Colaborador</option>
-						</select>
-					</div>
-				</div>
+    <section class="mt-6 rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
+      <h2 class="text-center text-3xl font-extrabold text-slate-800">Seccion de Proyectos</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <article class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <span class="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">Proyecto 1</span>
+          <h3 class="mt-3 text-xl font-extrabold text-slate-900">PolariX</h3>
+          <p class="mt-2 text-sm text-slate-600">Descripcion del proyecto.</p>
+        </article>
+        <article class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <span class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">Proyecto 2</span>
+          <h3 class="mt-3 text-xl font-extrabold text-slate-900">Mentes en Orbita</h3>
+          <p class="mt-2 text-sm text-slate-600">Descripcion del proyecto.</p>
+        </article>
+        <article class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <span class="inline-flex rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-700">Proyecto 3</span>
+          <h3 class="mt-3 text-xl font-extrabold text-slate-900">Hydronautas</h3>
+          <p class="mt-2 text-sm text-slate-600">Descripcion del proyecto.</p>
+        </article>
+      </div>
+    </section>
 
-				<button type="submit" class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-500 px-4 py-3 font-extrabold text-white shadow-lg transition hover:brightness-105">Anadir al equipo</button>
-				<p id="formMessage" class="mt-3 text-sm"></p>
-			</form>
-
-			<section class="rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
-				<div class="mb-4 flex items-center justify-between gap-3">
-					<h2 class="text-2xl font-extrabold text-slate-800">Directorio de miembros</h2>
-					<button id="refreshButton" class="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold transition hover:bg-slate-50">Actualizar</button>
-				</div>
-				<div id="membersList" class="space-y-1"></div>
-			</section>
-		</section>
-	</main>
-
-	<section id="editModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-		<div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-			<div class="mb-4 flex items-center justify-between">
-				<h3 class="text-xl font-extrabold text-slate-800">Editar miembro</h3>
-				<button id="closeEditModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
-			</div>
-			<form id="editMemberForm" class="space-y-4">
-				<div>
-					<label for="editNombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre completo</label>
-					<input id="editNombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-				</div>
-				<div>
-					<label for="editCorreo" class="mb-2 block text-sm font-semibold text-slate-700">Correo electronico</label>
-					<input id="editCorreo" name="correo" type="email" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-				</div>
-				<div>
-					<label for="editRol" class="mb-2 block text-sm font-semibold text-slate-700">Rol</label>
-					<select id="editRol" name="rol" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-						<option value="" selected disabled>Selecciona un rol</option>
-						<option value="Lider de equipo">Lider de equipo</option>
-						<option value="Participante">Participante</option>
-						<option value="Mentor">Mentor</option>
-						<option value="Coordinador">Coordinador</option>
-						<option value="Colaborador">Colaborador</option>
-					</select>
-				</div>
-				<div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-					<button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-cyan-600 px-4 py-3 font-extrabold text-white transition hover:bg-cyan-700">Guardar cambios</button>
-					<button id="cancelEditModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
-				</div>
-				<p id="editFormMessage" class="text-sm"></p>
-			</form>
-		</div>
-	</section>
-
-	<section id="deleteModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-		<div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-			<h3 class="text-xl font-extrabold text-slate-800">Eliminar miembro</h3>
-			<p id="deleteModalText" class="mt-2 text-sm text-slate-600">Confirma la eliminacion del miembro.</p>
-			<div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
-				<button id="confirmDeleteButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl bg-rose-600 px-4 py-3 font-extrabold text-white transition hover:bg-rose-700">Eliminar</button>
-				<button id="cancelDeleteButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
-			</div>
-		</div>
-	</section>
-
-	<script src="./src/app.js"></script>
+    <footer class="mt-6 rounded-2xl bg-slate-950/90 px-6 py-4 text-center text-sm text-slate-300 ring-1 ring-cyan-100/20">
+      <p>2026 Programa POLARIS - Instituto Tecnologico de Matamoros</p>
+    </footer>
+  </main>
 </body>
 </html>

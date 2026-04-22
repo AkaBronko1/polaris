@@ -10,6 +10,8 @@ app.use("/src", express.static(path.join(__dirname, "src")));
 
 const members = [];
 let nextId = 1;
+const projects = [];
+let nextProjectId = 1;
 
 function validateMemberInput(payload) {
   const nombre = String(payload?.nombre || "").trim();
@@ -26,6 +28,70 @@ function validateMemberInput(payload) {
   }
 
   return { ok: true, value: { nombre, correo, rol } };
+}
+
+function validateProjectInput(payload) {
+  const nombre = String(payload?.nombre || "").trim();
+  const tipo = String(payload?.tipo || "").trim();
+  const periodo = String(payload?.periodo || "").trim();
+  const descripcion = String(payload?.descripcion || "").trim();
+  const rawParticipantes = Array.isArray(payload?.participantes)
+    ? payload.participantes
+    : [];
+
+  const participantes = [...new Set(rawParticipantes.map((id) => Number(id)))].filter(
+    (id) => Number.isInteger(id) && id > 0
+  );
+
+  if (!nombre || !tipo || !periodo || !descripcion) {
+    return {
+      ok: false,
+      message: "nombre, tipo, periodo y descripcion son obligatorios"
+    };
+  }
+
+  if (participantes.length === 0) {
+    return {
+      ok: false,
+      message: "debes seleccionar participantes iniciales"
+    };
+  }
+
+  const memberIds = new Set(members.map((member) => member.id));
+  const invalidParticipants = participantes.filter((id) => !memberIds.has(id));
+  if (invalidParticipants.length > 0) {
+    return {
+      ok: false,
+      message: "hay participantes que no existen"
+    };
+  }
+
+  return {
+    ok: true,
+    value: {
+      nombre,
+      tipo,
+      periodo,
+      descripcion,
+      participantes
+    }
+  };
+}
+
+function mapProjectForResponse(project) {
+  const participantesDetalle = project.participantes
+    .map((participantId) => members.find((member) => member.id === participantId))
+    .filter(Boolean)
+    .map((member) => ({
+      id: member.id,
+      nombre: member.nombre,
+      rol: member.rol
+    }));
+
+  return {
+    ...project,
+    participantesDetalle
+  };
 }
 
 app.get("/api/members", (req, res) => {
@@ -49,6 +115,32 @@ app.post("/api/members", (req, res) => {
   nextId += 1;
   members.push(member);
   return res.status(201).json(member);
+});
+
+app.get("/api/projects", (req, res) => {
+  const payload = projects.map((project) => mapProjectForResponse(project));
+  res.json(payload);
+});
+
+app.post("/api/projects", (req, res) => {
+  const validation = validateProjectInput(req.body);
+  if (!validation.ok) {
+    return res.status(400).json({ message: validation.message });
+  }
+
+  const project = {
+    id: nextProjectId,
+    nombre: validation.value.nombre,
+    tipo: validation.value.tipo,
+    periodo: validation.value.periodo,
+    descripcion: validation.value.descripcion,
+    participantes: validation.value.participantes,
+    creadoEn: new Date().toISOString()
+  };
+
+  nextProjectId += 1;
+  projects.push(project);
+  return res.status(201).json(mapProjectForResponse(project));
 });
 
 app.put("/api/members/:id", (req, res) => {
@@ -84,11 +176,30 @@ app.delete("/api/members/:id", (req, res) => {
   }
 
   members.splice(memberIndex, 1);
+
+  for (const project of projects) {
+    project.participantes = project.participantes.filter(
+      (participantId) => participantId !== memberId
+    );
+  }
+
   return res.status(204).send();
 });
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/registro.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "registro.html"));
+});
+
+app.get("/proyectos.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "proyectos.html"));
+});
+
+app.get("/miembros.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "miembros.html"));
 });
 
 app.listen(PORT, () => {
