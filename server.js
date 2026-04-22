@@ -143,6 +143,44 @@ app.post("/api/projects", (req, res) => {
   return res.status(201).json(mapProjectForResponse(project));
 });
 
+app.put("/api/projects/:id", (req, res) => {
+  const projectId = Number(req.params.id);
+  const projectIndex = projects.findIndex((project) => project.id === projectId);
+
+  if (projectIndex === -1) {
+    return res.status(404).json({ message: "proyecto no encontrado" });
+  }
+
+  const validation = validateProjectInput(req.body);
+  if (!validation.ok) {
+    return res.status(400).json({ message: validation.message });
+  }
+
+  projects[projectIndex] = {
+    ...projects[projectIndex],
+    nombre: validation.value.nombre,
+    tipo: validation.value.tipo,
+    periodo: validation.value.periodo,
+    descripcion: validation.value.descripcion,
+    participantes: validation.value.participantes,
+    actualizadoEn: new Date().toISOString()
+  };
+
+  return res.json(mapProjectForResponse(projects[projectIndex]));
+});
+
+app.delete("/api/projects/:id", (req, res) => {
+  const projectId = Number(req.params.id);
+  const projectIndex = projects.findIndex((project) => project.id === projectId);
+
+  if (projectIndex === -1) {
+    return res.status(404).json({ message: "proyecto no encontrado" });
+  }
+
+  projects.splice(projectIndex, 1);
+  return res.status(204).send();
+});
+
 app.put("/api/members/:id", (req, res) => {
   const memberId = Number(req.params.id);
   const memberIndex = members.findIndex((member) => member.id === memberId);

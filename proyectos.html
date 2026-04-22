@@ -80,6 +80,64 @@
     </section>
   </main>
 
+  <section id="editProjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
+      <div class="mb-4 flex items-center justify-between">
+        <h3 class="text-xl font-extrabold text-slate-800">Editar proyecto</h3>
+        <button id="closeEditProjectModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
+      </div>
+      <form id="editProjectForm" class="space-y-4">
+        <div>
+          <label for="editProjectNombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre</label>
+          <input id="editProjectNombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <div>
+          <label for="editProjectTipo" class="mb-2 block text-sm font-semibold text-slate-700">Tipo</label>
+          <select id="editProjectTipo" name="tipo" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+            <option value="" selected disabled>Selecciona un tipo</option>
+            <option value="Proyecto academico">Proyecto academico</option>
+            <option value="Competencia">Competencia</option>
+            <option value="Evento">Evento</option>
+            <option value="Actividad">Actividad</option>
+            <option value="Prototipo">Prototipo</option>
+            <option value="Hackathon">Hackathon</option>
+          </select>
+        </div>
+        <div>
+          <label for="editProjectPeriodo" class="mb-2 block text-sm font-semibold text-slate-700">Fecha o periodo</label>
+          <input id="editProjectPeriodo" name="periodo" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <div>
+          <label for="editProjectDescripcion" class="mb-2 block text-sm font-semibold text-slate-700">Descripcion breve</label>
+          <textarea id="editProjectDescripcion" name="descripcion" rows="3" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"></textarea>
+        </div>
+        <div>
+          <p class="mb-2 block text-sm font-semibold text-slate-700">Participantes</p>
+          <div id="editProjectParticipantsSelector" class="max-h-48 space-y-2 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-3"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-cyan-600 px-4 py-3 font-extrabold text-white transition hover:bg-cyan-700">Guardar cambios</button>
+          <button id="cancelEditProjectModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+        </div>
+        <p id="editProjectFormMessage" class="text-sm"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="deleteProjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
+    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
+      <div class="mb-4 flex items-center justify-between">
+        <h3 class="text-xl font-extrabold text-slate-800">Eliminar proyecto</h3>
+        <button id="closeDeleteProjectModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
+      </div>
+      <p id="deleteProjectModalText" class="text-sm text-slate-600">Confirma la eliminacion del proyecto.</p>
+      <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <button id="confirmDeleteProjectButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl bg-rose-600 px-4 py-3 font-extrabold text-white transition hover:bg-rose-700">Eliminar</button>
+        <button id="cancelDeleteProjectModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+      </div>
+    </div>
+  </section>
+
   <script src="./src/proyectos.js"></script>
 </body>
 </html>
