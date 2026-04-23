@@ -31,53 +31,181 @@
     </header>
 
     <section class="rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
-      <div class="mb-4 flex items-center justify-between gap-3">
-        <h2 class="text-2xl font-extrabold text-slate-800">Directorio de miembros</h2>
-        <button id="refreshMembersButton" class="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold transition hover:bg-slate-50">Actualizar</button>
+      <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="text-3xl font-extrabold text-slate-900">Directorio de Miembros</h2>
+          <p class="mt-1 text-sm text-slate-600">Administra los miembros del equipo POLARIS</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="addMemberButton" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Agregar Miembro
+          </button>
+          <button id="refreshMembersButton" class="rounded-xl border-2 border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+            <svg class="inline h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-      <p id="membersMessage" class="mb-3 text-sm"></p>
-      <div id="membersViewList" class="space-y-3"></div>
+      <p id="membersMessage" class="mb-4 text-sm"></p>
+      <div id="membersViewList" class="space-y-4"></div>
     </section>
   </main>
 
-  <section id="editMemberModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-    <div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-      <div class="mb-4 flex items-center justify-between">
-        <h3 class="text-xl font-extrabold text-slate-800">Editar miembro</h3>
-        <button id="closeEditMemberModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
+  <section id="addMemberModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-slate-300">
+      <div class="mb-6 flex items-start justify-between">
+        <div>
+          <h3 class="text-2xl font-extrabold text-slate-900">Agregar Nuevo Miembro</h3>
+          <p class="mt-1 text-sm text-slate-600">Completa la información del nuevo integrante</p>
+        </div>
+        <button id="closeAddMemberModalButton" type="button" class="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <form id="editMemberBasicForm" class="space-y-4">
+      <form id="addMemberForm" class="space-y-5">
         <div>
-          <label for="editMemberNombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre completo</label>
-          <input id="editMemberNombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+          <label for="addMemberNombre" class="mb-2 block text-sm font-bold text-slate-700">
+            Nombre Completo <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="addMemberNombre" 
+            name="nombre" 
+            type="text" 
+            required 
+            placeholder="Ej: Juan Pérez García"
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
         </div>
         <div>
-          <label for="editMemberCorreo" class="mb-2 block text-sm font-semibold text-slate-700">Correo electronico</label>
-          <input id="editMemberCorreo" name="correo" type="email" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+          <label for="addMemberCorreo" class="mb-2 block text-sm font-bold text-slate-700">
+            Correo Electrónico <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="addMemberCorreo" 
+            name="correo" 
+            type="email" 
+            required 
+            placeholder="ejemplo@email.com"
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
         </div>
         <div>
-          <label for="editMemberRol" class="mb-2 block text-sm font-semibold text-slate-700">Rol</label>
-          <input id="editMemberRol" name="rol" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="Ej: participante">
+          <label for="addMemberRol" class="mb-2 block text-sm font-bold text-slate-700">
+            Rol o Cargo <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="addMemberRol" 
+            name="rol" 
+            type="text" 
+            required 
+            placeholder="Ej: Desarrollador, Diseñador, Líder"
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
         </div>
-        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-cyan-600 px-4 py-3 font-extrabold text-white transition hover:bg-cyan-700">Guardar cambios</button>
-          <button id="cancelEditMemberModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+        <p id="addMemberFormMessage" class="text-sm"></p>
+        <div class="flex gap-3 pt-2">
+          <button type="submit" class="flex-1 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30">
+            Guardar Miembro
+          </button>
+          <button id="cancelAddMemberModalButton" type="button" class="rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+            Cancelar
+          </button>
         </div>
-        <p id="editMemberFormMessage" class="text-sm"></p>
       </form>
     </div>
   </section>
 
-  <section id="deleteMemberModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-      <div class="mb-4 flex items-center justify-between">
-        <h3 class="text-xl font-extrabold text-slate-800">Eliminar miembro</h3>
-        <button id="closeDeleteMemberModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
+  <section id="editMemberModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-slate-300">
+      <div class="mb-6 flex items-start justify-between">
+        <div>
+          <h3 class="text-2xl font-extrabold text-slate-900">Editar Miembro</h3>
+          <p class="mt-1 text-sm text-slate-600">Actualiza la información del integrante</p>
+        </div>
+        <button id="closeEditMemberModalButton" type="button" class="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <p id="deleteMemberModalText" class="text-sm text-slate-600">Confirma la eliminacion del miembro.</p>
-      <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <button id="confirmDeleteMemberButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl bg-rose-600 px-4 py-3 font-extrabold text-white transition hover:bg-rose-700">Eliminar</button>
-        <button id="cancelDeleteMemberModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+      <form id="editMemberBasicForm" class="space-y-5">
+        <div>
+          <label for="editMemberNombre" class="mb-2 block text-sm font-bold text-slate-700">
+            Nombre Completo <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="editMemberNombre" 
+            name="nombre" 
+            type="text" 
+            required 
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <div>
+          <label for="editMemberCorreo" class="mb-2 block text-sm font-bold text-slate-700">
+            Correo Electrónico <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="editMemberCorreo" 
+            name="correo" 
+            type="email" 
+            required 
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <div>
+          <label for="editMemberRol" class="mb-2 block text-sm font-bold text-slate-700">
+            Rol o Cargo <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="editMemberRol" 
+            name="rol" 
+            type="text" 
+            required 
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <p id="editMemberFormMessage" class="text-sm"></p>
+        <div class="flex gap-3 pt-2">
+          <button type="submit" class="flex-1 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30">
+            Guardar Cambios
+          </button>
+          <button id="cancelEditMemberModalButton" type="button" class="rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="deleteMemberModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-slate-300">
+      <div class="mb-6 flex items-start justify-between">
+        <div class="flex items-start gap-4">
+          <div class="rounded-full bg-rose-100 p-3">
+            <svg class="h-6 w-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-slate-900">Eliminar Miembro</h3>
+            <p class="mt-1 text-sm text-slate-600">Esta acción no se puede deshacer</p>
+          </div>
+        </div>
+        <button id="closeDeleteMemberModalButton" type="button" class="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <p id="deleteMemberModalText" class="mb-6 ml-16 text-sm text-slate-700">¿Estás seguro que deseas eliminar este miembro?</p>
+      <div class="flex gap-3">
+        <button id="confirmDeleteMemberButton" type="button" class="flex-1 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-rose-500/25 transition hover:from-rose-600 hover:to-rose-700 hover:shadow-lg hover:shadow-rose-500/30">
+          Sí, Eliminar
+        </button>
+        <button id="cancelDeleteMemberModalButton" type="button" class="rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+          Cancelar
+        </button>
       </div>
     </div>
   </section>
