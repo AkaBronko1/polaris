@@ -76,7 +76,6 @@ function showAddModal() {
   addMemberForm.reset();
   showAddFormMessage("", false);
   addMemberModal.classList.remove("hidden");
-  addMemberModal.classList.add("flex");
   document.getElementById("addMemberNombre")?.focus();
 }
 
@@ -88,7 +87,6 @@ function hideAddModal() {
   addMemberForm.reset();
   showAddFormMessage("", false);
   addMemberModal.classList.add("hidden");
-  addMemberModal.classList.remove("flex");
 }
 
 function showEditModal(member) {
@@ -102,7 +100,6 @@ function showEditModal(member) {
   editMemberBasicForm.rol.value = member.rol;
   showEditFormMessage("", false);
   editMemberModal.classList.remove("hidden");
-  editMemberModal.classList.add("flex");
   editMemberBasicForm.nombre.focus();
 }
 
@@ -115,7 +112,6 @@ function hideEditModal() {
   editMemberBasicForm.reset();
   showEditFormMessage("", false);
   editMemberModal.classList.add("hidden");
-  editMemberModal.classList.remove("flex");
 }
 
 function showDeleteModal(member) {
@@ -126,7 +122,6 @@ function showDeleteModal(member) {
   deletingMemberId = member.id;
   deleteMemberModalText.textContent = `Seguro que deseas eliminar a ${member.nombre}?`;
   deleteMemberModal.classList.remove("hidden");
-  deleteMemberModal.classList.add("flex");
 }
 
 function hideDeleteModal() {
@@ -136,7 +131,6 @@ function hideDeleteModal() {
 
   deletingMemberId = null;
   deleteMemberModal.classList.add("hidden");
-  deleteMemberModal.classList.remove("flex");
 }
 
 function renderMembers(members) {

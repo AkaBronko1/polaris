@@ -1,50 +1,161 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Archivo+Black&display=swap"
+    rel="stylesheet">
   <link href="./dist/output.css" rel="stylesheet">
   <title>POLARIS - Proyectos</title>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 px-3 py-6 text-slate-900 sm:px-5 sm:py-8" style="font-family: 'Sora', sans-serif;">
-  <main class="mx-auto w-full max-w-6xl rounded-3xl bg-gradient-to-br from-slate-300 via-slate-300 to-slate-400 p-4 shadow-2xl ring-1 ring-cyan-100/25 sm:p-6 lg:p-8">
+
+<body
+  class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 px-3 py-6 text-slate-900 sm:px-5 sm:py-8"
+  style="font-family: 'Sora', sans-serif;">
+  <main
+    class="mx-auto w-full max-w-6xl rounded-3xl bg-gradient-to-br from-slate-300 via-slate-300 to-slate-400 p-4 shadow-2xl ring-1 ring-cyan-100/25 sm:p-6 lg:p-8">
     <nav class="mb-6 rounded-2xl bg-slate-950/90 px-4 py-3 shadow-xl ring-1 ring-cyan-100/20 sm:px-6">
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <a href="/" class="text-2xl font-black uppercase tracking-wide text-cyan-300" style="font-family: 'Archivo Black', sans-serif;">POLARIS</a>
+        <a href="/" class="text-2xl font-black uppercase tracking-wide text-cyan-300"
+          style="font-family: 'Archivo Black', sans-serif;">POLARIS</a>
         <ul class="flex flex-wrap gap-2 text-sm font-semibold">
-          <li><a href="/" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Inicio</a></li>
-          <li><a href="/registro.html" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Registro</a></li>
-          <li><a href="/proyectos.html" class="inline-flex rounded-lg bg-cyan-500/20 px-3 py-2 text-cyan-100 ring-1 ring-cyan-300/40">Proyectos</a></li>
-          <li><a href="/miembros.html" class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Miembros</a></li>
+          <li><a href="/"
+              class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Inicio</a></li>
+          <li><a href="/registro.html"
+              class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Registro</a></li>
+          <li><a href="/proyectos.html"
+              class="inline-flex rounded-lg bg-cyan-500/20 px-3 py-2 text-cyan-100 ring-1 ring-cyan-300/40">Proyectos</a>
+          </li>
+          <li><a href="/miembros.html"
+              class="inline-flex rounded-lg px-3 py-2 text-slate-200 transition hover:bg-slate-800/70">Miembros</a></li>
         </ul>
       </div>
     </nav>
 
-    <header class="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 px-5 pb-6 pt-5 text-white shadow-2xl sm:px-8 sm:pt-7">
+    <header
+      class="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 px-5 pb-6 pt-5 text-white shadow-2xl sm:px-8 sm:pt-7">
       <div class="pointer-events-none absolute -left-10 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-2xl"></div>
       <div class="pointer-events-none absolute -right-8 bottom-0 h-24 w-44 rounded-full bg-cyan-300/15 blur-2xl"></div>
-      <h1 class="relative text-5xl leading-none font-black uppercase tracking-wide text-cyan-300 drop-shadow-2xl sm:text-6xl" style="font-family: 'Archivo Black', sans-serif;">PROYECTOS</h1>
-      <p class="relative mt-2 text-sm font-semibold text-cyan-100 sm:text-base">Registro y visualizacion de proyectos, eventos y actividades.</p>
+      <h1
+        class="relative text-4xl leading-none font-black uppercase tracking-wide text-cyan-300 drop-shadow-2xl sm:text-5xl lg:text-6xl"
+        style="font-family: 'Archivo Black', sans-serif;">PROYECTOS</h1>
+      <p class="relative mt-2 text-sm font-semibold text-cyan-100 sm:text-base">Registro y visualización de proyectos,
+        eventos y actividades.</p>
     </header>
 
     <section class="grid gap-5 lg:grid-cols-2">
-      <form id="projectForm" class="rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
-        <h2 class="text-2xl font-extrabold text-slate-800">Registrar proyecto</h2>
-        <p class="mt-2 text-sm text-slate-600">Captura informacion general del proyecto o actividad.</p>
+      <form id="projectForm" class="min-w-0 rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
+        <h2 class="text-3xl font-extrabold text-slate-900">Registrar proyecto</h2>
+        <p class="mt-1 text-sm text-slate-600">Captura información general del proyecto o actividad.</p>
 
-        <div class="mt-6 space-y-4">
+        <div class="mt-6 space-y-5">
           <div>
-            <label for="projectNombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre</label>
-            <input id="projectNombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="Ej: Hackathon regional 2026">
+            <label for="projectNombre" class="mb-2 block text-sm font-bold text-slate-700">Nombre del proyecto <span
+                class="text-rose-500">*</span></label>
+            <input id="projectNombre" name="nombre" type="text" required
+              class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
+              placeholder="Ej: Hackathon regional 2026">
+          </div>
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label for="projectTipo" class="mb-2 block text-sm font-bold text-slate-700">Tipo <span
+                  class="text-rose-500">*</span></label>
+              <select id="projectTipo" name="tipo" required
+                class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+                <option value="" selected disabled>Selecciona un tipo</option>
+                <option value="Proyecto academico">Proyecto académico</option>
+                <option value="Competencia">Competencia</option>
+                <option value="Evento">Evento</option>
+                <option value="Actividad">Actividad</option>
+                <option value="Prototipo">Prototipo</option>
+                <option value="Hackathon">Hackathon</option>
+              </select>
+            </div>
+            <div>
+              <label for="projectPeriodo" class="mb-2 block text-sm font-bold text-slate-700">Fecha o periodo <span
+                  class="text-rose-500">*</span></label>
+              <input id="projectPeriodo" name="periodo" type="text" required
+                class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
+                placeholder="Ej: Mayo - Junio 2026">
+            </div>
           </div>
           <div>
-            <label for="projectTipo" class="mb-2 block text-sm font-semibold text-slate-700">Tipo</label>
-            <select id="projectTipo" name="tipo" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+            <label for="projectDescripcion" class="mb-2 block text-sm font-bold text-slate-700">Descripción breve <span
+                class="text-rose-500">*</span></label>
+            <textarea id="projectDescripcion" name="descripcion" rows="3" required
+              class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
+              placeholder="Resumen corto del proyecto..."></textarea>
+          </div>
+          <div>
+            <p class="mb-2 block text-sm font-bold text-slate-700">Participantes involucrados <span
+                class="text-rose-500">*</span></p>
+            <div id="projectParticipantsSelector"
+              class="custom-scrollbar max-h-48 space-y-2 overflow-y-auto rounded-xl border border-slate-200 p-2 shadow-inner">
+            </div>
+          </div>
+        </div>
+
+        <button type="submit"
+          class="mt-8 w-full rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30">
+          Registrar proyecto
+        </button>
+        <p id="projectMessage" class="mt-3 text-sm"></p>
+      </form>
+
+      <section class="min-w-0 rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
+        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900">Listado de proyectos</h2>
+            <p class="mt-1 text-sm text-slate-600">Administra los proyectos y actividades de POLARIS</p>
+          </div>
+          <button id="projectRefreshButton"
+            class="rounded-xl border-2 border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+            <svg class="inline h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <div id="projectsList" class="space-y-4"></div>
+      </section>
+    </section>
+  </main>
+
+  <section id="editProjectModal"
+    class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="flex min-h-full items-center justify-center py-4">
+      <div class="w-full max-w-lg rounded-2xl bg-white p-5 sm:p-8 shadow-2xl ring-1 ring-slate-300">
+      <div class="mb-6 flex items-start justify-between">
+        <div>
+          <h3 class="text-2xl font-extrabold text-slate-900">Editar proyecto</h3>
+          <p class="mt-1 text-sm text-slate-600">Actualiza la información del proyecto</p>
+        </div>
+        <button id="closeEditProjectModalButton" type="button"
+          class="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <form id="editProjectForm" class="space-y-5">
+        <div>
+          <label for="editProjectNombre" class="mb-2 block text-sm font-bold text-slate-700">Nombre <span
+              class="text-rose-500">*</span></label>
+          <input id="editProjectNombre" name="nombre" type="text" required
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+        </div>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label for="editProjectTipo" class="mb-2 block text-sm font-bold text-slate-700">Tipo <span
+                class="text-rose-500">*</span></label>
+            <select id="editProjectTipo" name="tipo" required
+              class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
               <option value="" selected disabled>Selecciona un tipo</option>
-              <option value="Proyecto academico">Proyecto academico</option>
+              <option value="Proyecto academico">Proyecto académico</option>
               <option value="Competencia">Competencia</option>
               <option value="Evento">Evento</option>
               <option value="Actividad">Actividad</option>
@@ -53,91 +164,82 @@
             </select>
           </div>
           <div>
-            <label for="projectPeriodo" class="mb-2 block text-sm font-semibold text-slate-700">Fecha o periodo</label>
-            <input id="projectPeriodo" name="periodo" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="Ej: Mayo 2026 - Junio 2026">
-          </div>
-          <div>
-            <label for="projectDescripcion" class="mb-2 block text-sm font-semibold text-slate-700">Descripcion breve</label>
-            <textarea id="projectDescripcion" name="descripcion" rows="3" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100" placeholder="Resumen corto del proyecto"></textarea>
-          </div>
-          <div>
-            <p class="mb-2 block text-sm font-semibold text-slate-700">Participantes iniciales</p>
-            <div id="projectParticipantsSelector" class="max-h-48 space-y-2 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-3"></div>
+            <label for="editProjectPeriodo" class="mb-2 block text-sm font-bold text-slate-700">Periodo <span
+                class="text-rose-500">*</span></label>
+            <input id="editProjectPeriodo" name="periodo" type="text" required
+              class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
           </div>
         </div>
-
-        <button type="submit" class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-500 px-4 py-3 font-extrabold text-white shadow-lg transition hover:brightness-105">Registrar proyecto</button>
-        <p id="projectMessage" class="mt-3 text-sm"></p>
-      </form>
-
-      <section class="rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200">
-        <div class="mb-4 flex items-center justify-between gap-3">
-          <h2 class="text-2xl font-extrabold text-slate-800">Listado de proyectos</h2>
-          <button id="projectRefreshButton" class="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold transition hover:bg-slate-50">Actualizar</button>
-        </div>
-        <div id="projectsList" class="space-y-3"></div>
-      </section>
-    </section>
-  </main>
-
-  <section id="editProjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-    <div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-      <div class="mb-4 flex items-center justify-between">
-        <h3 class="text-xl font-extrabold text-slate-800">Editar proyecto</h3>
-        <button id="closeEditProjectModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
-      </div>
-      <form id="editProjectForm" class="space-y-4">
         <div>
-          <label for="editProjectNombre" class="mb-2 block text-sm font-semibold text-slate-700">Nombre</label>
-          <input id="editProjectNombre" name="nombre" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
+          <label for="editProjectDescripcion" class="mb-2 block text-sm font-bold text-slate-700">Descripción <span
+              class="text-rose-500">*</span></label>
+          <textarea id="editProjectDescripcion" name="descripcion" rows="3" required
+            class="w-full rounded-xl border-2 border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"></textarea>
         </div>
         <div>
-          <label for="editProjectTipo" class="mb-2 block text-sm font-semibold text-slate-700">Tipo</label>
-          <select id="editProjectTipo" name="tipo" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-            <option value="" selected disabled>Selecciona un tipo</option>
-            <option value="Proyecto academico">Proyecto academico</option>
-            <option value="Competencia">Competencia</option>
-            <option value="Evento">Evento</option>
-            <option value="Actividad">Actividad</option>
-            <option value="Prototipo">Prototipo</option>
-            <option value="Hackathon">Hackathon</option>
-          </select>
-        </div>
-        <div>
-          <label for="editProjectPeriodo" class="mb-2 block text-sm font-semibold text-slate-700">Fecha o periodo</label>
-          <input id="editProjectPeriodo" name="periodo" type="text" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100">
-        </div>
-        <div>
-          <label for="editProjectDescripcion" class="mb-2 block text-sm font-semibold text-slate-700">Descripcion breve</label>
-          <textarea id="editProjectDescripcion" name="descripcion" rows="3" required class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none transition duration-200 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"></textarea>
-        </div>
-        <div>
-          <p class="mb-2 block text-sm font-semibold text-slate-700">Participantes</p>
-          <div id="editProjectParticipantsSelector" class="max-h-48 space-y-2 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-3"></div>
-        </div>
-        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-cyan-600 px-4 py-3 font-extrabold text-white transition hover:bg-cyan-700">Guardar cambios</button>
-          <button id="cancelEditProjectModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+          <p class="mb-2 block text-sm font-bold text-slate-700">Participantes <span class="text-rose-500">*</span></p>
+          <div id="editProjectParticipantsSelector"
+            class="custom-scrollbar max-h-48 space-y-2 overflow-y-auto rounded-xl border border-slate-200 p-2 shadow-inner">
+          </div>
         </div>
         <p id="editProjectFormMessage" class="text-sm"></p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button type="submit"
+            class="flex-1 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30">
+            Guardar Cambios
+          </button>
+          <button id="cancelEditProjectModalButton" type="button"
+            class="rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 w-full sm:w-auto">
+            Cancelar
+          </button>
+        </div>
       </form>
+    </div>
     </div>
   </section>
 
-  <section id="deleteProjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4">
-    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-      <div class="mb-4 flex items-center justify-between">
-        <h3 class="text-xl font-extrabold text-slate-800">Eliminar proyecto</h3>
-        <button id="closeDeleteProjectModalButton" type="button" class="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cerrar</button>
+  <section id="deleteProjectModal"
+    class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="flex min-h-full items-center justify-center py-4">
+      <div class="w-full max-w-md rounded-2xl bg-white p-5 sm:p-8 shadow-2xl ring-1 ring-slate-300">
+      <div class="mb-6 flex items-start justify-between">
+        <div class="flex items-start gap-4">
+          <div class="rounded-full bg-rose-100 p-3">
+            <svg class="h-6 w-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-slate-900">Eliminar Proyecto</h3>
+            <p class="mt-1 text-sm text-slate-600">Esta acción no se puede deshacer</p>
+          </div>
+        </div>
+        <button id="closeDeleteProjectModalButton" type="button"
+          class="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <p id="deleteProjectModalText" class="text-sm text-slate-600">Confirma la eliminacion del proyecto.</p>
-      <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <button id="confirmDeleteProjectButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl bg-rose-600 px-4 py-3 font-extrabold text-white transition hover:bg-rose-700">Eliminar</button>
-        <button id="cancelDeleteProjectModalButton" type="button" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition hover:bg-slate-50">Cancelar</button>
+      <p id="deleteProjectModalText" class="mb-6 mt-4 sm:mt-0 sm:ml-16 text-sm text-slate-700">¿Estás seguro de que deseas eliminar este
+        proyecto?</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="confirmDeleteProjectButton" type="button"
+          class="flex-1 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 px-6 py-3.5 font-extrabold text-white shadow-md shadow-rose-500/25 transition hover:from-rose-600 hover:to-rose-700 hover:shadow-lg hover:shadow-rose-500/30">
+          Sí, Eliminar
+        </button>
+        <button id="cancelDeleteProjectModalButton" type="button"
+          class="rounded-xl border-2 border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 w-full sm:w-auto">
+          Cancelar
+        </button>
       </div>
+    </div>
     </div>
   </section>
 
   <script src="./src/proyectos.js"></script>
 </body>
+
 </html>

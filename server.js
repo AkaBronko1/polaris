@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 app.use("/src", express.static(path.join(__dirname, "src")));
+app.use(express.static(path.join(__dirname)));
 
 const members = [];
 let nextId = 1;
