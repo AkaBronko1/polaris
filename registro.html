@@ -23,52 +23,52 @@
       </div>
     </nav>
 
-    <section class="rounded-2xl bg-slate-950/85 p-4 shadow-xl ring-1 ring-cyan-100/20 sm:p-6">
-      <h1 class="mb-4 text-center text-3xl font-extrabold text-cyan-300">Registro de Miembros POLARIS</h1>
+    <section class="rounded-2xl bg-slate-950/85 p-3 sm:p-4 lg:p-6 shadow-xl ring-1 ring-cyan-100/20">
+      <h1 class="mb-3 sm:mb-4 text-center text-xl sm:text-2xl lg:text-3xl font-extrabold text-cyan-300">Registro de Miembros POLARIS</h1>
 
-      <form id="formularioRegistro" class="grid grid-cols-1 gap-4" novalidate>
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-4">
-          <legend class="px-2 text-lg font-bold text-cyan-200">Datos personales</legend>
-          <p class="mb-3 text-sm text-slate-300">Completa tu informacion basica para identificar tu registro.</p>
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+      <form id="formularioRegistro" class="grid grid-cols-1 gap-3 sm:gap-4" novalidate>
+        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Datos personales</legend>
+          <p class="mb-2 sm:mb-3 text-xs sm:text-sm text-slate-300">Completa tu informacion basica para identificar tu registro.</p>
+          <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
-              <label for="nombreCompleto" class="mb-1 block text-sm font-semibold text-slate-200">Nombre completo *</label>
-              <input id="nombreCompleto" name="nombreCompleto" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" placeholder="Ej. Juan Perez Martinez" maxlength="100" aria-describedby="ayudaNombre errorNombreCompleto" required>
+              <label for="nombreCompleto" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Nombre completo *</label>
+              <input id="nombreCompleto" name="nombreCompleto" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" placeholder="Ej. Juan Perez Martinez" maxlength="100" aria-describedby="ayudaNombre errorNombreCompleto" required>
               <small id="ayudaNombre" class="mt-1 block text-xs text-slate-400">Escribe nombre y apellidos. Minimo 10 caracteres.</small>
               <div id="errorNombreCompleto" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label for="correo" class="mb-1 block text-sm font-semibold text-slate-200">Correo electronico *</label>
-              <input id="correo" name="correo" type="email" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" placeholder="Ej. usuario@correo.com" aria-describedby="ayudaCorreo errorCorreo" required>
+              <label for="correo" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Correo electronico *</label>
+              <input id="correo" name="correo" type="email" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" placeholder="Ej. usuario@correo.com" aria-describedby="ayudaCorreo errorCorreo" required>
               <small id="ayudaCorreo" class="mt-1 block text-xs text-slate-400">Usa un correo valido para contacto oficial.</small>
               <div id="errorCorreo" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label for="telefono" class="mb-1 block text-sm font-semibold text-slate-200">Telefono *</label>
-              <input id="telefono" name="telefono" type="tel" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" placeholder="Ej. 8681234567" aria-describedby="ayudaTelefono errorTelefono" required>
+              <label for="telefono" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Telefono *</label>
+              <input id="telefono" name="telefono" type="tel" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" placeholder="Ej. 8681234567" aria-describedby="ayudaTelefono errorTelefono" required>
               <small id="ayudaTelefono" class="mt-1 block text-xs text-slate-400">El telefono debe tener exactamente 10 digitos.</small>
               <div id="errorTelefono" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label for="fechaNacimiento" class="mb-1 block text-sm font-semibold text-slate-200">Fecha de nacimiento *</label>
-              <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" aria-describedby="errorFechaNacimiento" required>
+              <label for="fechaNacimiento" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Fecha de nacimiento *</label>
+              <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" aria-describedby="errorFechaNacimiento" required>
               <div id="errorFechaNacimiento" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-4">
-          <legend class="px-2 text-lg font-bold text-cyan-200">Datos academicos</legend>
-          <p class="mb-3 text-sm text-slate-300">Indica tu situacion academica actual dentro de la institucion.</p>
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-6">
+        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Datos academicos</legend>
+          <p class="mb-2 sm:mb-3 text-xs sm:text-sm text-slate-300">Indica tu situacion academica actual dentro de la institucion.</p>
+          <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-6">
             <div class="md:col-span-3">
-              <label for="institucion" class="mb-1 block text-sm font-semibold text-slate-200">Institucion *</label>
-              <input id="institucion" name="institucion" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" placeholder="Ej. Instituto Tecnologico de Matamoros" maxlength="120" aria-describedby="errorInstitucion" required>
+              <label for="institucion" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Institucion *</label>
+              <input id="institucion" name="institucion" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" placeholder="Ej. Instituto Tecnologico de Matamoros" maxlength="120" aria-describedby="errorInstitucion" required>
               <div id="errorInstitucion" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div class="md:col-span-3">
-              <label for="carrera" class="mb-1 block text-sm font-semibold text-slate-200">Carrera *</label>
-              <select id="carrera" name="carrera" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" aria-describedby="ayudaCarrera errorCarrera" required>
+              <label for="carrera" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Carrera *</label>
+              <select id="carrera" name="carrera" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" aria-describedby="ayudaCarrera errorCarrera" required>
                 <option value="" selected disabled>Selecciona tu carrera</option>
                 <option value="mecatronica">Ingenieria Mecatronica</option>
                 <option value="sistemas">Ingenieria en Sistemas Computacionales</option>
@@ -80,29 +80,29 @@
               <div id="errorCarrera" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div class="md:col-span-2">
-              <label for="semestre" class="mb-1 block text-sm font-semibold text-slate-200">Semestre *</label>
-              <input id="semestre" name="semestre" type="number" min="1" max="12" placeholder="Ej. 6" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" aria-describedby="errorSemestre" required>
+              <label for="semestre" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Semestre *</label>
+              <input id="semestre" name="semestre" type="number" min="1" max="12" placeholder="Ej. 6" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" aria-describedby="errorSemestre" required>
               <div id="errorSemestre" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div class="md:col-span-2">
-              <label for="generacion" class="mb-1 block text-sm font-semibold text-slate-200">Generacion POLARIS *</label>
-              <input id="generacion" name="generacion" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" placeholder="Ej. Generacion 2026" maxlength="40" aria-describedby="errorGeneracion" required>
+              <label for="generacion" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Generacion POLARIS *</label>
+              <input id="generacion" name="generacion" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" placeholder="Ej. Generacion 2026" maxlength="40" aria-describedby="errorGeneracion" required>
               <div id="errorGeneracion" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div class="md:col-span-2">
-              <label for="anioIngreso" class="mb-1 block text-sm font-semibold text-slate-200">Año de ingreso *</label>
-              <input id="anioIngreso" name="anioIngreso" type="number" min="2018" max="2035" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" placeholder="Ej. 2024" aria-describedby="errorAnioIngreso" required>
+              <label for="anioIngreso" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Año de ingreso *</label>
+              <input id="anioIngreso" name="anioIngreso" type="number" min="2018" max="2035" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" placeholder="Ej. 2024" aria-describedby="errorAnioIngreso" required>
               <div id="errorAnioIngreso" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-4">
-          <legend class="px-2 text-lg font-bold text-cyan-200">Perfil POLARIS</legend>
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Perfil POLARIS</legend>
+          <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
-              <label for="proyectoInteres" class="mb-1 block text-sm font-semibold text-slate-200">Proyecto o equipo de interes *</label>
-              <select id="proyectoInteres" name="proyectoInteres" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" aria-describedby="errorProyectoInteres" required>
+              <label for="proyectoInteres" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Proyecto o equipo de interes *</label>
+              <select id="proyectoInteres" name="proyectoInteres" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" aria-describedby="errorProyectoInteres" required>
                 <option value="" selected disabled>Selecciona una opcion</option>
                 <option value="mentes-en-orbita">Mentes en Orbita</option>
                 <option value="polarix">PolariX</option>
@@ -112,9 +112,9 @@
               <div id="errorProyectoInteres" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label class="mb-1 block text-sm font-semibold text-slate-200">Rol dentro de POLARIS *</label>
+              <label class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Rol dentro de POLARIS *</label>
               <small class="mb-2 block text-xs text-slate-400">Selecciona el rol con el que participaras.</small>
-              <div class="space-y-1 text-sm text-slate-200">
+              <div class="space-y-1 text-xs sm:text-sm text-slate-200">
                 <label class="block"><input class="mr-2" type="radio" name="tipoParticipacion" id="participacionEstudiante" value="estudiante" required>Estudiante</label>
                 <label class="block"><input class="mr-2" type="radio" name="tipoParticipacion" id="participacionEgresado" value="egresado">Egresado</label>
                 <label class="block"><input class="mr-2" type="radio" name="tipoParticipacion" id="participacionDocente" value="docente">Docente</label>
@@ -124,10 +124,10 @@
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-4">
-          <legend class="px-2 text-lg font-bold text-cyan-200">Habilidades</legend>
+        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Habilidades</legend>
           <small class="mb-2 block text-xs text-slate-400">Selecciona al menos una habilidad para continuar.</small>
-          <div class="grid grid-cols-2 gap-2 text-sm text-slate-200 md:grid-cols-5">
+          <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm text-slate-200 sm:grid-cols-3 md:grid-cols-5">
             <label><input class="mr-2" type="checkbox" id="habProgramacion" name="habilidades" value="programacion">Programacion</label>
             <label><input class="mr-2" type="checkbox" id="habElectronica" name="habilidades" value="electronica">Electronica</label>
             <label><input class="mr-2" type="checkbox" id="habCad" name="habilidades" value="diseno-cad">Disenio CAD</label>
@@ -137,24 +137,24 @@
           <div id="errorHabilidades" class="mt-2 min-h-5 text-xs text-rose-300"></div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-4">
-          <legend class="px-2 text-lg font-bold text-cyan-200">Seguimiento</legend>
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Seguimiento</legend>
+          <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
-              <label for="lugarActual" class="mb-1 block text-sm font-semibold text-slate-200">Lugar de trabajo o institucion actual</label>
-              <input id="lugarActual" name="lugarActual" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" maxlength="120" placeholder="Ej. Centro de Innovacion Espacial" aria-describedby="ayudaLugarActual errorLugarActual">
+              <label for="lugarActual" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Lugar de trabajo o institucion actual</label>
+              <input id="lugarActual" name="lugarActual" type="text" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" maxlength="120" placeholder="Ej. Centro de Innovacion Espacial" aria-describedby="ayudaLugarActual errorLugarActual">
               <small id="ayudaLugarActual" class="mt-1 block text-xs text-slate-400">Si lo capturas, escribe al menos 5 caracteres.</small>
               <div id="errorLugarActual" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label for="motivacion" class="mb-1 block text-sm font-semibold text-slate-200">Motivacion para integrarte a POLARIS *</label>
-              <textarea id="motivacion" name="motivacion" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-slate-100" rows="3" minlength="20" maxlength="400" placeholder="Ej. Quiero aportar en proyectos de tecnologia espacial" aria-describedby="ayudaMotivacion errorMotivacion" required></textarea>
+              <label for="motivacion" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Motivacion para integrarte a POLARIS *</label>
+              <textarea id="motivacion" name="motivacion" class="w-full rounded-xl border border-slate-600 bg-slate-950 px-3 py-2 text-sm sm:text-base text-slate-100" rows="3" minlength="20" maxlength="400" placeholder="Ej. Quiero aportar en proyectos de tecnologia espacial" aria-describedby="ayudaMotivacion errorMotivacion" required></textarea>
               <small id="ayudaMotivacion" class="mt-1 block text-xs text-slate-400">Escribe una motivacion clara de minimo 20 caracteres.</small>
               <div id="errorMotivacion" class="mt-1 min-h-5 text-xs text-rose-300"></div>
             </div>
             <div>
-              <label class="mb-1 block text-sm font-semibold text-slate-200">Rol actual</label>
-              <div class="space-y-1 text-sm text-slate-200">
+              <label class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Rol actual</label>
+              <div class="space-y-1 text-xs sm:text-sm text-slate-200">
                 <label class="block"><input class="mr-2" type="radio" name="rolActual" id="rolLider" value="lider-equipo">Lider de equipo</label>
                 <label class="block"><input class="mr-2" type="radio" name="rolActual" id="rolParticipante" value="participante">Participante</label>
                 <label class="block"><input class="mr-2" type="radio" name="rolActual" id="rolMentor" value="mentor">Mentor</label>
@@ -163,8 +163,8 @@
               </div>
             </div>
             <div>
-              <label class="mb-1 block text-sm font-semibold text-slate-200">Interes en seguir colaborando con POLARIS *</label>
-              <div class="space-y-1 text-sm text-slate-200">
+              <label class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Interes en seguir colaborando con POLARIS *</label>
+              <div class="space-y-1 text-xs sm:text-sm text-slate-200">
                 <label class="block"><input class="mr-2" type="radio" name="seguirColaborando" id="seguirSi" value="si" required>Si</label>
                 <label class="block"><input class="mr-2" type="radio" name="seguirColaborando" id="seguirNo" value="no">No</label>
               </div>
@@ -175,11 +175,11 @@
 
         <div>
           <p class="mb-2 text-xs text-slate-300">* Campo obligatorio.</p>
-          <div id="mensajesFormulario" class="hidden rounded-lg border border-slate-600 bg-slate-900/70 p-3 text-sm"></div>
+          <div id="mensajesFormulario" class="hidden rounded-lg border border-slate-600 bg-slate-900/70 p-3 text-xs sm:text-sm"></div>
         </div>
 
         <div>
-          <button type="submit" class="w-full rounded-xl border border-cyan-300/70 bg-cyan-400/10 px-4 py-3 text-sm font-extrabold text-cyan-100 transition hover:bg-cyan-400/20">Registrarme en POLARIS</button>
+          <button type="submit" class="w-full rounded-xl border border-cyan-300/70 bg-cyan-400/10 px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold text-cyan-100 transition hover:bg-cyan-400/20">Registrarme en POLARIS</button>
         </div>
       </form>
     </section>
