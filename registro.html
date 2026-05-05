@@ -23,13 +23,14 @@
       </div>
     </nav>
 
-    <section class="rounded-2xl bg-slate-950/85 p-3 sm:p-4 lg:p-6 shadow-xl ring-1 ring-cyan-100/20">
-      <h1 class="mb-3 sm:mb-4 text-center text-xl sm:text-2xl lg:text-3xl font-extrabold text-cyan-300">Registro de Miembros POLARIS</h1>
+    <section class="mx-auto max-w-4xl rounded-2xl bg-slate-950/85 p-5 sm:p-6 lg:p-8 shadow-xl ring-1 ring-cyan-100/20">
+      <h1 class="mb-4 text-center text-2xl sm:text-3xl lg:text-4xl font-extrabold text-cyan-300 tracking-wide">Registro de Miembros POLARIS</h1>
+      <p class="mx-auto max-w-2xl text-center text-sm sm:text-base text-slate-300 leading-relaxed">Completa tu solicitud con claridad. El sistema revisará los datos y te informará si el registro se guardó con éxito.</p>
 
-      <form id="formularioRegistro" class="grid grid-cols-1 gap-3 sm:gap-4" novalidate>
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+      <form id="formularioRegistro" class="grid grid-cols-1 gap-6" novalidate>
+        <fieldset class="space-y-4 rounded-xl border border-slate-700 bg-slate-900/50 p-4 sm:p-5">
           <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Datos personales</legend>
-          <p class="mb-2 sm:mb-3 text-xs sm:text-sm text-slate-300">Completa tu informacion basica para identificar tu registro.</p>
+          <p class="mb-2 sm:mb-3 text-sm text-slate-300 leading-relaxed">Completa tu información básica para identificar tu registro.</p>
           <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
               <label for="nombreCompleto" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Nombre completo *</label>
@@ -57,9 +58,9 @@
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
-          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Datos academicos</legend>
-          <p class="mb-2 sm:mb-3 text-xs sm:text-sm text-slate-300">Indica tu situacion academica actual dentro de la institucion.</p>
+        <fieldset class="space-y-4 rounded-xl border border-slate-700 bg-slate-900/50 p-4 sm:p-5">
+          <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Datos académicos</legend>
+          <p class="mb-2 sm:mb-3 text-sm text-slate-300 leading-relaxed">Indica tu situación académica actual dentro de la institución.</p>
           <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-6">
             <div class="md:col-span-3">
               <label for="institucion" class="mb-1 block text-xs sm:text-sm font-semibold text-slate-200">Institucion *</label>
@@ -97,7 +98,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+        <fieldset class="space-y-4 rounded-xl border border-slate-700 bg-slate-900/50 p-4 sm:p-5">
           <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Perfil POLARIS</legend>
           <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
@@ -124,7 +125,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+        <fieldset class="space-y-4 rounded-xl border border-slate-700 bg-slate-900/50 p-4 sm:p-5">
           <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Habilidades</legend>
           <small class="mb-2 block text-xs text-slate-400">Selecciona al menos una habilidad para continuar.</small>
           <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm text-slate-200 sm:grid-cols-3 md:grid-cols-5">
@@ -137,7 +138,7 @@
           <div id="errorHabilidades" class="mt-2 min-h-5 text-xs text-rose-300"></div>
         </fieldset>
 
-        <fieldset class="rounded-xl border border-slate-700 bg-slate-900/50 p-3 sm:p-4">
+        <fieldset class="space-y-4 rounded-xl border border-slate-700 bg-slate-900/50 p-4 sm:p-5">
           <legend class="px-2 text-base sm:text-lg font-bold text-cyan-200">Seguimiento</legend>
           <div class="grid grid-cols-1 gap-2 sm:gap-3 md:grid-cols-2">
             <div>
@@ -179,7 +180,7 @@
         </div>
 
         <div>
-          <button type="submit" class="w-full rounded-xl border border-cyan-300/70 bg-cyan-400/10 px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold text-cyan-100 transition hover:bg-cyan-400/20 disabled:opacity-60 disabled:cursor-not-allowed">Registrarme en POLARIS</button>
+          <button type="submit" class="w-full rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold text-white shadow-md shadow-cyan-500/25 transition hover:from-cyan-600 hover:to-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30 disabled:opacity-60 disabled:cursor-not-allowed">Registrarme en POLARIS</button>
         </div>
       </form>
     </section>

@@ -73,17 +73,17 @@ function renderParticipantSelector(members, container, selectedIds = []) {
 
   if (!Array.isArray(members) || members.length === 0) {
     container.innerHTML =
-      '<p class="text-sm text-slate-500">No hay miembros registrados.</p>';
+      '<p class="text-center text-sm text-slate-500 py-4">No hay miembros registrados.</p>';
     return;
   }
 
   container.innerHTML = members
     .map(
       (member) => `
-        <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 transition hover:border-cyan-300">
-          <input type="checkbox" name="participantes" value="${member.id}" ${selectedIds.includes(member.id) ? "checked" : ""} class="h-4 w-4 flex-shrink-0 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500">
+        <label class="flex cursor-pointer items-center gap-3 rounded-lg border-2 border-slate-200 bg-white px-3.5 py-2.5 transition hover:border-cyan-400 hover:bg-cyan-50">
+          <input type="checkbox" name="participantes" value="${member.id}" ${selectedIds.includes(member.id) ? "checked" : ""} class="h-4 w-4 flex-shrink-0 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500 cursor-pointer">
           <span class="min-w-0 flex-1 truncate text-sm font-semibold text-slate-700">${escapeHtml(member.nombre)}</span>
-          <span class="flex-shrink-0 rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">${escapeHtml(member.rol)}</span>
+          <span class="flex-shrink-0 rounded-full bg-cyan-100 px-2.5 py-1 text-xs font-semibold text-cyan-700">${escapeHtml(member.rol)}</span>
         </label>
       `
     )
