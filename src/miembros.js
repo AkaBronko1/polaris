@@ -18,6 +18,9 @@ const closeDeleteMemberModalButton = document.getElementById("closeDeleteMemberM
 const cancelDeleteMemberModalButton = document.getElementById("cancelDeleteMemberModalButton");
 const confirmDeleteMemberButton = document.getElementById("confirmDeleteMemberButton");
 
+const addMemberSubmitButton = addMemberForm?.querySelector('button[type="submit"]');
+const editMemberSubmitButton = editMemberBasicForm?.querySelector('button[type="submit"]');
+
 let currentMembers = [];
 let editingMemberId = null;
 let deletingMemberId = null;
@@ -66,6 +69,17 @@ function showEditFormMessage(text, isError = false) {
   editMemberFormMessage.className = isError
     ? "rounded-lg border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700"
     : "rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700";
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function toggleButtonState(button, disabled) {
+  if (!button) return;
+  button.disabled = disabled;
+  button.classList.toggle("opacity-60", disabled);
+  button.classList.toggle("cursor-not-allowed", disabled);
 }
 
 function showAddModal() {
@@ -247,6 +261,11 @@ if (editMemberBasicForm) {
       return;
     }
 
+    if (!editMemberBasicForm.reportValidity()) {
+      showEditFormMessage("Revisa los campos obligatorios.", true);
+      return;
+    }
+
     const formData = new FormData(editMemberBasicForm);
     const payload = {
       nombre: String(formData.get("nombre") || "").trim(),
@@ -259,6 +278,12 @@ if (editMemberBasicForm) {
       return;
     }
 
+    if (!isValidEmail(payload.correo)) {
+      showEditFormMessage("Ingrese un correo válido.", true);
+      return;
+    }
+
+    toggleButtonState(editMemberSubmitButton, true);
     try {
       const response = await fetch(`/api/members/${editingMemberId}`, {
         method: "PUT",
@@ -278,6 +303,8 @@ if (editMemberBasicForm) {
       await loadMembers();
     } catch (error) {
       showEditFormMessage(error.message || "Error al actualizar miembro.", true);
+    } finally {
+      toggleButtonState(editMemberSubmitButton, false);
     }
   });
 }
@@ -289,6 +316,11 @@ if (addMemberButton) {
 if (addMemberForm) {
   addMemberForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (!addMemberForm.reportValidity()) {
+      showAddFormMessage("Revisa los campos obligatorios.", true);
+      return;
+    }
 
     const formData = new FormData(addMemberForm);
     const payload = {
@@ -302,6 +334,12 @@ if (addMemberForm) {
       return;
     }
 
+    if (!isValidEmail(payload.correo)) {
+      showAddFormMessage("Ingrese un correo válido.", true);
+      return;
+    }
+
+    toggleButtonState(addMemberSubmitButton, true);
     try {
       const response = await fetch("/api/members", {
         method: "POST",
@@ -321,6 +359,8 @@ if (addMemberForm) {
       await loadMembers();
     } catch (error) {
       showAddFormMessage(error.message || "Error al agregar miembro.", true);
+    } finally {
+      toggleButtonState(addMemberSubmitButton, false);
     }
   });
 }
@@ -388,6 +428,8 @@ if (confirmDeleteMemberButton) {
       await loadMembers();
     } catch (error) {
       showMembersMessage(error.message || "Error al eliminar miembro.", true);
+    } finally {
+      toggleButtonState(confirmDeleteMemberButton, false);
     }
   });
 }

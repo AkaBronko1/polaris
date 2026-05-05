@@ -1,5 +1,6 @@
 const formRegistro = document.getElementById("formularioRegistro");
 const mensajesFormulario = document.getElementById("mensajesFormulario");
+const registroSubmitButton = formRegistro?.querySelector('button[type="submit"]');
 
 function showFormMessage(text, isError = false) {
   if (!mensajesFormulario) {
@@ -11,6 +12,17 @@ function showFormMessage(text, isError = false) {
   mensajesFormulario.className = isError
     ? "rounded-lg border border-rose-300 bg-rose-50/90 p-3 text-sm text-rose-700"
     : "rounded-lg border border-emerald-300 bg-emerald-50/90 p-3 text-sm text-emerald-700";
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function toggleButtonState(button, disabled) {
+  if (!button) return;
+  button.disabled = disabled;
+  button.classList.toggle("opacity-60", disabled);
+  button.classList.toggle("cursor-not-allowed", disabled);
 }
 
 if (formRegistro) {
@@ -41,6 +53,12 @@ if (formRegistro) {
       return;
     }
 
+    if (!isValidEmail(payload.correo)) {
+      showFormMessage("Ingrese un correo válido.", true);
+      return;
+    }
+
+    toggleButtonState(registroSubmitButton, true);
     try {
       const response = await fetch("/api/members", {
         method: "POST",
@@ -59,6 +77,8 @@ if (formRegistro) {
       formRegistro.reset();
     } catch (error) {
       showFormMessage(error.message || "Error al guardar el registro.", true);
+    } finally {
+      toggleButtonState(registroSubmitButton, false);
     }
   });
 }

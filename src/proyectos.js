@@ -17,6 +17,9 @@ const closeDeleteProjectModalButton = document.getElementById("closeDeleteProjec
 const cancelDeleteProjectModalButton = document.getElementById("cancelDeleteProjectModalButton");
 const confirmDeleteProjectButton = document.getElementById("confirmDeleteProjectButton");
 
+const projectSubmitButton = projectForm?.querySelector('button[type="submit"]');
+const editProjectSubmitButton = editProjectForm?.querySelector('button[type="submit"]');
+
 let currentProjects = [];
 let currentMembers = [];
 let editingProjectId = null;
@@ -35,11 +38,29 @@ function showProjectMessage(text, isError = false) {
   if (!projectMessage) return;
   projectMessage.textContent = text;
   projectMessage.className = isError
-    ? "mt-3 text-sm text-rose-600"
-    : "mt-3 text-sm text-emerald-700";
+    ? "mt-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700"
+    : "mt-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700";
 }
 
 function showEditProjectFormMessage(text, isError = false) {
+  if (!editProjectFormMessage) return;
+  editProjectFormMessage.textContent = text;
+  editProjectFormMessage.className = isError
+    ? "rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700"
+    : "rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700";
+}
+
+function toggleButtonState(button, disabled) {
+  if (!button) return;
+  button.disabled = disabled;
+  button.classList.toggle("opacity-60", disabled);
+  button.classList.toggle("cursor-not-allowed", disabled);
+}
+
+function getSelectedParticipants(container) {
+  if (!container) return [];
+  return Array.from(container.querySelectorAll('input[name="participantes"]:checked')).map((input) => Number(input.value));
+}
   if (!editProjectFormMessage) return;
   editProjectFormMessage.textContent = text;
   editProjectFormMessage.className = isError
@@ -231,15 +252,18 @@ if (projectForm) {
   projectForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    if (!projectForm.reportValidity()) {
+      showProjectMessage("Revisa los campos obligatorios.", true);
+      return;
+    }
+
     const formData = new FormData(projectForm);
     const payload = {
       nombre: String(formData.get("nombre") || "").trim(),
       tipo: String(formData.get("tipo") || "").trim(),
       periodo: String(formData.get("periodo") || "").trim(),
       descripcion: String(formData.get("descripcion") || "").trim(),
-      participantes: Array.from(
-        projectParticipantsSelector.querySelectorAll('input[name="participantes"]:checked')
-      ).map((input) => Number(input.value))
+      participantes: getSelectedParticipants(projectParticipantsSelector)
     };
 
     if (!payload.nombre || !payload.tipo || !payload.periodo || !payload.descripcion) {
@@ -252,6 +276,7 @@ if (projectForm) {
       return;
     }
 
+    toggleButtonState(projectSubmitButton, true);
     try {
       const response = await fetch("/api/projects", {
         method: "POST",
@@ -267,6 +292,8 @@ if (projectForm) {
       await loadProjects();
     } catch (error) {
       showProjectMessage(error.message || "Error al registrar proyecto.", true);
+    } finally {
+      toggleButtonState(projectSubmitButton, false);
     }
   });
 }
@@ -280,15 +307,18 @@ if (editProjectForm) {
       return;
     }
 
+    if (!editProjectForm.reportValidity()) {
+      showEditProjectFormMessage("Revisa los campos obligatorios.", true);
+      return;
+    }
+
     const formData = new FormData(editProjectForm);
     const payload = {
       nombre: String(formData.get("nombre") || "").trim(),
       tipo: String(formData.get("tipo") || "").trim(),
       periodo: String(formData.get("periodo") || "").trim(),
       descripcion: String(formData.get("descripcion") || "").trim(),
-      participantes: Array.from(
-        editProjectParticipantsSelector.querySelectorAll('input[name="participantes"]:checked')
-      ).map((input) => Number(input.value))
+      participantes: getSelectedParticipants(editProjectParticipantsSelector)
     };
 
     if (!payload.nombre || !payload.tipo || !payload.periodo || !payload.descripcion) {
@@ -301,6 +331,7 @@ if (editProjectForm) {
       return;
     }
 
+    toggleButtonState(editProjectSubmitButton, true);
     try {
       const response = await fetch(`/api/projects/${editingProjectId}`, {
         method: "PUT",
@@ -316,6 +347,8 @@ if (editProjectForm) {
       await loadProjects();
     } catch (error) {
       showEditProjectFormMessage(error.message || "Error al actualizar proyecto.", true);
+    } finally {
+      toggleButtonState(editProjectSubmitButton, false);
     }
   });
 }
@@ -324,6 +357,7 @@ if (confirmDeleteProjectButton) {
   confirmDeleteProjectButton.addEventListener("click", async () => {
     if (!deletingProjectId) return;
 
+    toggleButtonState(confirmDeleteProjectButton, true);
     try {
       const response = await fetch(`/api/projects/${deletingProjectId}`, {
         method: "DELETE"
@@ -344,6 +378,8 @@ if (confirmDeleteProjectButton) {
     } catch (error) {
        hideDeleteModal();
        showProjectMessage(error.message || "Error al eliminar proyecto.", true);
+    } finally {
+       toggleButtonState(confirmDeleteProjectButton, false);
     }
   });
 }
