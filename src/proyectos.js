@@ -61,12 +61,6 @@ function getSelectedParticipants(container) {
   if (!container) return [];
   return Array.from(container.querySelectorAll('input[name="participantes"]:checked')).map((input) => Number(input.value));
 }
-  if (!editProjectFormMessage) return;
-  editProjectFormMessage.textContent = text;
-  editProjectFormMessage.className = isError
-    ? "text-sm text-rose-600"
-    : "text-sm text-emerald-700";
-}
 
 function renderParticipantSelector(members, container, selectedIds = []) {
   if (!container) return;
